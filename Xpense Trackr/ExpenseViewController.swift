@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         //MARK:  Properties
  
-    @IBOutlet weak var expenseLabel: UILabel!
     @IBOutlet weak var expenseTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var amountTextField: UITextField!
@@ -36,7 +35,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        expenseLabel.text = textField.text
     }
     
     //MARK: UIImagePickerControllerDelegate
@@ -87,7 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         else{
         expenseValue = 0
         }
-        expenseLabel.text = "Expense: \(expenseValue)"
+      //  expenseLabel.text = "Expense: \(expenseValue)"
 
         
         
