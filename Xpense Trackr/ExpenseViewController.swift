@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import os.log
 
-class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         //MARK:  Properties
  
     @IBOutlet weak var expenseTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
-    
+    var expense : Expenses?
     var expenseValue: Double = 0.00
     
     override func viewDidLoad() {
@@ -23,19 +25,31 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         // Handle the text field’s user input through delegate callbacks.
         expenseTextField.delegate = self
-        amountTextField.keyboardType = UIKeyboardType.numberPad
+        amountTextField.keyboardType = UIKeyboardType.decimalPad
+        updateSaveButton()
     }
     
     //MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         // Hide the keyboard.
         textField.resignFirstResponder()
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //Disable save
+        saveButton.isEnabled = false
+
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButton()
+        navigationItem.title = textField.text
+    }
+    
+    
     
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -57,6 +71,60 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         dismiss(animated: true, completion: nil)
     }
     
+    //Navigation controls
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+        let name = expenseTextField.text ?? ""
+        let photo = photoImageView.image
+        
+        let amount_text = amountTextField.text ?? ""
+        if(name.isEmpty == true && amount_text.isEmpty == true){
+            saveButton.isEnabled = false
+        }
+        else if (name.isEmpty == false && amount_text.isEmpty == true){
+            let alert = UIAlertController(title: "Error", message: "You did not fill out the amount field", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else if (name.isEmpty == true && amount_text.isEmpty == false)
+        {
+            let alert = UIAlertController(title: "Error", message: "You did not fill out the text field", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            if let temp = amountTextField.text{
+                expenseValue = Double(temp)!
+                expenseValue = ((expenseValue) * 100).rounded() / 100
+            }
+            expense = Expenses(name: name, photo: photo, value: expenseValue)
+        }
+
+
+        
+
+
+    }
+    
+    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func updateSaveButton(){
+        // Disable 
+        let text = expenseTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+        
+    }
+    
 
 
     @IBAction func selectImage(_ sender: UITapGestureRecognizer) {
@@ -64,7 +132,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         
         // Hide the keyboard.
         expenseTextField.resignFirstResponder()
-        
+        amountTextField.resignFirstResponder()
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
         
@@ -76,6 +144,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    @IBAction func clearKeyboard(_ sender: Any) {
+        expenseTextField.resignFirstResponder()
+        amountTextField.resignFirstResponder()
+        
+    }
     @IBAction func setExpenseButton(_ sender: UIButton) {
         
         if let temp = amountTextField.text{
@@ -87,6 +160,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         }
       //  expenseLabel.text = "Expense: \(expenseValue)"
 
+        
         
         
         

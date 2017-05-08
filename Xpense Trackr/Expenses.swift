@@ -22,6 +22,9 @@ class Expenses {
         guard !name.isEmpty else {
             return nil
         }
+        guard (value > 0) else{
+            return nil
+        }
         
         // Initialize stored properties.
         self.name = name

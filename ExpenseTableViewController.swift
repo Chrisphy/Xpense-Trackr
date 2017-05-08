@@ -9,15 +9,15 @@
 import UIKit
 
 class ExpenseTableViewController: UITableViewController {
-
+    var expenses = [Expenses]();
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //samples init
+        
+        loadSamples()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,25 +28,34 @@ class ExpenseTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return expenses.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        
+        let cellIdentifier = "ExpenseTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ExpenseTableViewCell else {
+            fatalError("Dequeuedcell is not an instance of ExpenseTableViewCell")
+        }
+        
+        let expense = expenses[indexPath.row]
+        
+        cell.nameLabel.text = expense.name
+        cell.expenseLabel.text = String(expense.expenseValue)
+        cell.photoImage.image = expense.photo
         // Configure the cell...
 
         return cell
     }
-    */
-
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -91,5 +100,30 @@ class ExpenseTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func unwindList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ExpenseViewController, let expense = sourceViewController.expense {
+            
+            // Add a new meal.
+            let newIndexPath = IndexPath(row: expenses.count, section: 0)
+            
+            expenses.append(expense)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
+    
+    private func loadSamples(){
+        let photo1 = UIImage(named: "defaultPhoto")
+        
+        guard let expense1 = Expenses(name: "Groceries for mum", photo: photo1, value: 14.50) else {
+            fatalError("Unable to instantiate expense1 (Test)")
+        }
+        
+        expenses += [expense1]
+    }
+    
+    
+    
 
 }
