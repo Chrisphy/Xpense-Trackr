@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89083C901EC010BA00A2532A /* ExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89083C8F1EC010BA00A2532A /* ExpenseViewController.swift */; };
+		89083C921EC010C300A2532A /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89083C911EC010C300A2532A /* ExpenseTableViewCell.swift */; };
+		89083C941EC010C800A2532A /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89083C931EC010C800A2532A /* Expenses.swift */; };
+		89083C961EC010CE00A2532A /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89083C951EC010CE00A2532A /* ExpenseTableViewController.swift */; };
 		893B285A1EB319800058A6AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893B28591EB319800058A6AF /* AppDelegate.swift */; };
-		893B285C1EB319800058A6AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893B285B1EB319800058A6AF /* ViewController.swift */; };
 		893B285F1EB319800058A6AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 893B285D1EB319800058A6AF /* Main.storyboard */; };
 		893B28611EB319800058A6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 893B28601EB319800058A6AF /* Assets.xcassets */; };
 		893B28641EB319800058A6AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 893B28621EB319800058A6AF /* LaunchScreen.storyboard */; };
 		893B286F1EB319800058A6AF /* Xpense_TrackrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893B286E1EB319800058A6AF /* Xpense_TrackrTests.swift */; };
 		893B287A1EB319800058A6AF /* Xpense_TrackrUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893B28791EB319800058A6AF /* Xpense_TrackrUITests.swift */; };
-		899FB6841EB70ED6000295A0 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899FB6831EB70ED6000295A0 /* Expenses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89083C8F1EC010BA00A2532A /* ExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseViewController.swift; sourceTree = "<group>"; };
+		89083C911EC010C300A2532A /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
+		89083C931EC010C800A2532A /* Expenses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
+		89083C951EC010CE00A2532A /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		893B28561EB319800058A6AF /* Xpense Trackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xpense Trackr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		893B28591EB319800058A6AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		893B285B1EB319800058A6AF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		893B285E1EB319800058A6AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		893B28601EB319800058A6AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		893B28631EB319800058A6AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,7 +53,6 @@
 		893B28751EB319800058A6AF /* Xpense TrackrUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Xpense TrackrUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		893B28791EB319800058A6AF /* Xpense_TrackrUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Xpense_TrackrUITests.swift; sourceTree = "<group>"; };
 		893B287B1EB319800058A6AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		899FB6831EB70ED6000295A0 /* Expenses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,12 @@
 		893B28581EB319800058A6AF /* Xpense Trackr */ = {
 			isa = PBXGroup;
 			children = (
+				89083C8F1EC010BA00A2532A /* ExpenseViewController.swift */,
+				89083C951EC010CE00A2532A /* ExpenseTableViewController.swift */,
+				89083C931EC010C800A2532A /* Expenses.swift */,
+				89083C911EC010C300A2532A /* ExpenseTableViewCell.swift */,
 				893B28591EB319800058A6AF /* AppDelegate.swift */,
-				893B285B1EB319800058A6AF /* ViewController.swift */,
 				893B285D1EB319800058A6AF /* Main.storyboard */,
-				899FB6831EB70ED6000295A0 /* Expenses.swift */,
 				893B28601EB319800058A6AF /* Assets.xcassets */,
 				893B28621EB319800058A6AF /* LaunchScreen.storyboard */,
 				893B28651EB319800058A6AF /* Info.plist */,
@@ -262,9 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				899FB6841EB70ED6000295A0 /* Expenses.swift in Sources */,
-				893B285C1EB319800058A6AF /* ViewController.swift in Sources */,
+				89083C941EC010C800A2532A /* Expenses.swift in Sources */,
+				89083C921EC010C300A2532A /* ExpenseTableViewCell.swift in Sources */,
 				893B285A1EB319800058A6AF /* AppDelegate.swift in Sources */,
+				89083C961EC010CE00A2532A /* ExpenseTableViewController.swift in Sources */,
+				89083C901EC010BA00A2532A /* ExpenseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

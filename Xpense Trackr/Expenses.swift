@@ -10,6 +10,14 @@ import UIKit
 
 class Expenses {
     
+    struct propertyKey {
+        static let name = "name"
+        static let photo = "photo"
+        static let expenseValue = "value"
+        
+    }
+    
+    
     var name: String
     var photo: UIImage?
     var expenseValue: Double
@@ -20,6 +28,9 @@ class Expenses {
         
         // The name must not be empty
         guard !name.isEmpty else {
+            return nil
+        }
+        guard (value > 0) else{
             return nil
         }
         

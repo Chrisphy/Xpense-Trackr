@@ -10,6 +10,10 @@ import UIKit
 
 class ExpenseTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var expenseLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var photoImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
