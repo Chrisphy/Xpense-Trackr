@@ -63,7 +63,10 @@
                                     <outlet property="expenseLabel" destination="zg7-0h-Ktl" id="5U3-1d-dXy"/>
                                     <outlet property="nameLabel" destination="od3-gJ-B4k" id="Wz3-JP-Eoj"/>
                                     <outlet property="photoImage" destination="xrB-83-JZD" id="yDq-wJ-Kgc"/>
+<<<<<<< HEAD
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetails" id="NnS-5W-ERW"/>
+=======
+>>>>>>> 59d5f2acc009af827b4a660b855f4b2567b08ab3
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -87,7 +90,11 @@
         <!--New Expense-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+<<<<<<< HEAD
                 <viewController id="BYZ-38-t0r" customClass="ExpenseViewController" customModule="Xpense_Trackr" customModuleProvider="target" sceneMemberID="viewController">
+=======
+                <viewController id="BYZ-38-t0r" customClass="ExpenseViewController" customModule="Xpense_Trackr" sceneMemberID="viewController">
+>>>>>>> 59d5f2acc009af827b4a660b855f4b2567b08ab3
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -193,7 +200,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9lt-Gu-5Kw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="1209" y="-276"/>
+=======
+            <point key="canvasLocation" x="1192.8" y="123.68815592203899"/>
+>>>>>>> 59d5f2acc009af827b4a660b855f4b2567b08ab3
         </scene>
     </scenes>
     <resources>

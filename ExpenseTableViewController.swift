@@ -62,7 +62,11 @@ class ExpenseTableViewController: UITableViewController {
     }
     
     
+<<<<<<< HEAD
     
+=======
+    /*
+>>>>>>> 59d5f2acc009af827b4a660b855f4b2567b08ab3
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -131,11 +135,16 @@ class ExpenseTableViewController: UITableViewController {
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
         }
     }
+<<<<<<< HEAD
  
+=======
+    */
+>>>>>>> 59d5f2acc009af827b4a660b855f4b2567b08ab3
     
     @IBAction func unwindList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? ExpenseViewController, let expense = sourceViewController.expense {
             
+<<<<<<< HEAD
             if let selectedIndex = tableView.indexPathForSelectedRow {
                 // Update existing data.
                 expenses[selectedIndex.row] = expense
@@ -152,6 +161,17 @@ class ExpenseTableViewController: UITableViewController {
 
     }
     
+=======
+            // Add a new meal.
+            let newIndexPath = IndexPath(row: expenses.count, section: 0)
+            
+            expenses.append(expense)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
+    
+>>>>>>> 59d5f2acc009af827b4a660b855f4b2567b08ab3
     private func loadSamples(){
         let photo1 = UIImage(named: "defaultPhoto")
         

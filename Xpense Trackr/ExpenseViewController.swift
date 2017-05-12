@@ -26,6 +26,7 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         // Handle the text field’s user input through delegate callbacks.
         expenseTextField.delegate = self
         amountTextField.keyboardType = UIKeyboardType.decimalPad
+<<<<<<< HEAD
         
         
         if let expense = expense {
@@ -36,6 +37,8 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         }
         
         
+=======
+>>>>>>> 59d5f2acc009af827b4a660b855f4b2567b08ab3
         updateSaveButton()
     }
     
@@ -125,6 +128,7 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+<<<<<<< HEAD
         let currentViewControllerIsAdd = presentingViewController is UINavigationController
         
         if currentViewControllerIsAdd {
@@ -139,6 +143,9 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         else {
             fatalError("No Expense View Controller (adding/updating) view controller is active")
         }
+=======
+        dismiss(animated: true, completion: nil)
+>>>>>>> 59d5f2acc009af827b4a660b855f4b2567b08ab3
     }
     
     private func updateSaveButton(){
