@@ -14,16 +14,19 @@ class ExpenseTableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
+
         //This creates an edit button on the left for deleting items from the list
         navigationItem.leftBarButtonItem = editButtonItem
         
-        
-        super.viewDidLoad()
-        
-        //samples init
-        
-        loadSamples()
+        if let savedData = loadData() {
+            expenses += savedData
+        }
+        else {
+            //samples init
+            loadSamples()
+
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +47,8 @@ class ExpenseTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        var expenseCurrent: Double = 0.00
+   
         let cellIdentifier = "ExpenseTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ExpenseTableViewCell else {
@@ -57,7 +61,19 @@ class ExpenseTableViewController: UITableViewController {
         cell.expenseLabel.text = String(expense.expenseValue)
         cell.photoImage.image = expense.photo
         // Configure the cell...
-
+        
+        if let temp = TotalExpenseViewController().totalExpenseLabel.text{
+            expenseCurrent = Double(temp)!
+            expenseCurrent = ((expenseCurrent) * 100).rounded() / 100
+        }
+        else {
+            expenseCurrent = 0
+        }
+  
+        let current : Double = expense.expenseValue
+        
+        TotalExpenseViewController().totalExpenseLabel.text = "$ \(expenseCurrent + current)"
+        
         return cell
     }
     
@@ -76,6 +92,7 @@ class ExpenseTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             expenses.remove(at: indexPath.row)
+            save()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -148,6 +165,7 @@ class ExpenseTableViewController: UITableViewController {
                 expenses.append(expense)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            save()
         }
 
     }
@@ -162,7 +180,18 @@ class ExpenseTableViewController: UITableViewController {
         expenses += [expense1]
     }
     
+    private func save(){
+        let Success = NSKeyedArchiver.archiveRootObject(expenses, toFile: Expenses.Archive.path)
+        if Success {
+            os_log("Successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save", log: OSLog.default, type: .error)
+        }
+    }
     
+    private func loadData() -> [Expenses]?  {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Expenses.Archive.path) as? [Expenses]
+    }
     
 
 }

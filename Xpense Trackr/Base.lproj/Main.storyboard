@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="14R-ha-ybj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9G8-m6-lFC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vrc-hg-wFn" id="ltR-MH-e5v">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrB-83-JZD">
@@ -159,10 +159,67 @@
             </objects>
             <point key="canvasLocation" x="2132" y="123.68815592203899"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item 2-->
+        <scene sceneID="mn0-rf-JPv">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="049-z0-jEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="CaO-48-T8v" customClass="TotalExpenseViewController" customModule="Xpense_Trackr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="huW-YH-NXy"/>
+                        <viewControllerLayoutGuide type="bottom" id="sSq-Dl-cqb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qyU-ga-x4W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Expenses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cea-cf-kt1">
+                                <rect key="frame" x="54" y="62" width="266" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="1" green="0.00040475297272257738" blue="0.19688235729250469" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aq1-5X-qF8">
+                                <rect key="frame" x="54" y="184" width="266" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="pfU-OE-Vha"/>
+                    <connections>
+                        <outlet property="totalExpenseLabel" destination="aq1-5X-qF8" id="fEP-4z-D2m"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-1362.4000000000001" y="1043.9280359820091"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="lj8-gH-hoa">
+            <objects>
+                <tabBarController id="9G8-m6-lFC" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="k5P-W6-q1d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="14R-ha-ybj" kind="relationship" relationship="viewControllers" id="DjQ-l1-JyV"/>
+                        <segue destination="CaO-48-T8v" kind="relationship" relationship="viewControllers" id="dr6-3i-kcq"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0k7-uh-sNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2903" y="567"/>
+        </scene>
+        <!--Expenses-->
         <scene sceneID="6qv-Lg-wd8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="14R-ha-ybj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Expenses" image="money" id="IvJ-jE-YwF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xpn-PK-PFs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -198,6 +255,7 @@
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
+        <image name="money" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NnS-5W-ERW"/>

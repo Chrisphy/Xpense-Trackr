@@ -11,6 +11,7 @@
 		89083C921EC010C300A2532A /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89083C911EC010C300A2532A /* ExpenseTableViewCell.swift */; };
 		89083C941EC010C800A2532A /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89083C931EC010C800A2532A /* Expenses.swift */; };
 		89083C961EC010CE00A2532A /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89083C951EC010CE00A2532A /* ExpenseTableViewController.swift */; };
+		8922683C1EC951B6001C105D /* TotalExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8922683B1EC951B6001C105D /* TotalExpenseViewController.swift */; };
 		893B285A1EB319800058A6AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893B28591EB319800058A6AF /* AppDelegate.swift */; };
 		893B285F1EB319800058A6AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 893B285D1EB319800058A6AF /* Main.storyboard */; };
 		893B28611EB319800058A6AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 893B28601EB319800058A6AF /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		89083C911EC010C300A2532A /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		89083C931EC010C800A2532A /* Expenses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 		89083C951EC010CE00A2532A /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		8922683B1EC951B6001C105D /* TotalExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalExpenseViewController.swift; sourceTree = "<group>"; };
 		893B28561EB319800058A6AF /* Xpense Trackr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xpense Trackr.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		893B28591EB319800058A6AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		893B285E1EB319800058A6AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				89083C931EC010C800A2532A /* Expenses.swift */,
 				89083C911EC010C300A2532A /* ExpenseTableViewCell.swift */,
 				893B28591EB319800058A6AF /* AppDelegate.swift */,
+				8922683B1EC951B6001C105D /* TotalExpenseViewController.swift */,
 				893B285D1EB319800058A6AF /* Main.storyboard */,
 				893B28601EB319800058A6AF /* Assets.xcassets */,
 				893B28621EB319800058A6AF /* LaunchScreen.storyboard */,
@@ -272,6 +275,7 @@
 				89083C921EC010C300A2532A /* ExpenseTableViewCell.swift in Sources */,
 				893B285A1EB319800058A6AF /* AppDelegate.swift in Sources */,
 				89083C961EC010CE00A2532A /* ExpenseTableViewController.swift in Sources */,
+				8922683C1EC951B6001C105D /* TotalExpenseViewController.swift in Sources */,
 				89083C901EC010BA00A2532A /* ExpenseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
