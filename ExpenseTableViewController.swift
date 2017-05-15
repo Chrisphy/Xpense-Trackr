@@ -46,9 +46,7 @@ class ExpenseTableViewController: UITableViewController {
     }
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var expenseCurrent: Double = 0.00
-   
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {   
         let cellIdentifier = "ExpenseTableViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ExpenseTableViewCell else {
@@ -61,18 +59,7 @@ class ExpenseTableViewController: UITableViewController {
         cell.expenseLabel.text = String(expense.expenseValue)
         cell.photoImage.image = expense.photo
         // Configure the cell...
-        
-        if let temp = TotalExpenseViewController().totalExpenseLabel.text{
-            expenseCurrent = Double(temp)!
-            expenseCurrent = ((expenseCurrent) * 100).rounded() / 100
-        }
-        else {
-            expenseCurrent = 0
-        }
-  
-        let current : Double = expense.expenseValue
-        
-        TotalExpenseViewController().totalExpenseLabel.text = "$ \(expenseCurrent + current)"
+    
         
         return cell
     }
@@ -164,6 +151,22 @@ class ExpenseTableViewController: UITableViewController {
                 
                 expenses.append(expense)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+                
+                var expenseCurrent: Double? = 0.00
+                let current : Double = expense.expenseValue
+                if let temp = TotalExpenseViewController().totalExpenseLabel?.text {
+                    expenseCurrent = ((Double(temp)! + current) * 100).rounded() / 100
+                }
+                else {
+                    expenseCurrent = 0 + current
+                }
+                
+                if expenseCurrent != nil {
+                TotalExpenseViewController().totalExpenseLabel.text = "$ \(expenseCurrent)"
+                }
+                else {
+                    TotalExpenseViewController().totalExpenseLabel.text = "$ 0"
+                }
             }
             save()
         }

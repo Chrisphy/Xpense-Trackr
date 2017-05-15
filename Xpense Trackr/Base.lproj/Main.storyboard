@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vrc-hg-wFn" id="ltR-MH-e5v">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xrB-83-JZD">
@@ -159,11 +159,10 @@
             </objects>
             <point key="canvasLocation" x="2132" y="123.68815592203899"/>
         </scene>
-        <!--Item 2-->
+        <!--TotalExpenseviewController-->
         <scene sceneID="mn0-rf-JPv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="049-z0-jEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="CaO-48-T8v" customClass="TotalExpenseViewController" customModule="Xpense_Trackr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TotalExpenseviewController" id="CaO-48-T8v" customClass="TotalExpenseViewController" customModule="Xpense_Trackr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="huW-YH-NXy"/>
                         <viewControllerLayoutGuide type="bottom" id="sSq-Dl-cqb"/>
@@ -194,6 +193,7 @@
                         <outlet property="totalExpenseLabel" destination="aq1-5X-qF8" id="fEP-4z-D2m"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="049-z0-jEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1362.4000000000001" y="1043.9280359820091"/>
         </scene>

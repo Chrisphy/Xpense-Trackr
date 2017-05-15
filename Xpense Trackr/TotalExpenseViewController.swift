@@ -9,12 +9,15 @@
 import UIKit
 
 class TotalExpenseViewController: UIViewController {
-
+    
+    var newExpenseTotal: String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+NotificationCenter.default.addObserver(self, selector: Selector(("refreshlbl:")), name: NSNotification.Name(rawValue: "refresh"), object: nil)
         // Do any additional setup after loading the view.
-    }
+    }       
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,5 +35,6 @@ class TotalExpenseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
 }

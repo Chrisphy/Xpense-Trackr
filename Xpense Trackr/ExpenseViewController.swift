@@ -125,7 +125,7 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-        let currentViewControllerIsAdd = presentingViewController is UINavigationController
+        let currentViewControllerIsAdd = presentingViewController is UITabBarController
         
         if currentViewControllerIsAdd {
             dismiss(animated: true, completion: nil)
