@@ -16,10 +16,13 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var totalLabel: UILabel!
     
     var expense : Expenses?
     var expenseValue: Double = 0.00
-    
+    var currentValue: Double!
+    var addition_result : Double = 0.00
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,11 +120,8 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             }
             expense = Expenses(name: name, photo: photo, value: expenseValue)
         }
-
-
         
-
-
+        
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
@@ -172,25 +172,73 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         amountTextField.resignFirstResponder()
         
     }
-    @IBAction func setExpenseButton(_ sender: UIButton) {
-        
-        if let temp = amountTextField.text{
-        expenseValue = Double(temp)!
-        expenseValue = ((expenseValue) * 100).rounded() / 100
-        }
-        else{
-        expenseValue = 0
-        }
-      //  expenseLabel.text = "Expense: \(expenseValue)"
 
+    @IBAction func fiveDollars(_ sender: Any) {
+        
+        if let temp = Double(amountTextField.text!) {
+            print("The user entered a value price of \(temp)")
+            currentValue = ((Double(temp)) * 100).rounded() / 100
+        } else {
+            print("Not a valid number: \(amountTextField.text!)")
+            currentValue = 0.00
+        }
         
         
+        addition_result = (currentValue + 5.00)
         
-        
-        
-        
-        
+        amountTextField.text = String(format: "%.2f", addition_result)
         
     }
+    
+    @IBAction func fifteenDollars(_ sender: Any) {
+        if let temp = Double(amountTextField.text!) {
+            print("The user entered a value price of \(temp)")
+            currentValue = ((Double(temp)) * 100).rounded() / 100
+        } else {
+            print("Not a valid number: \(amountTextField.text!)")
+            currentValue = 0.00
+        }
+        
+        
+        addition_result = (currentValue + 15.00)
+        
+        amountTextField.text = String(format: "%.2f", addition_result)
+        
+
+    }
+ 
+    @IBAction func clearButton(_ sender: Any) {
+        amountTextField.text = ""
+        expenseTextField.text = ""
+        photoImageView.image = UIImage (named: "defaultPhoto")
+    }
+
+    
+    
+    /*
+    private func updateLabel(){
+        if let temp = totalLabel.text{
+            currentValue = Double(temp)!
+            currentValue = ((currentValue) * 100).rounded() / 100
+        }
+        else{
+            currentValue = 0
+        }
+        
+        if let temp = amountTextField.text{
+            expenseValue = Double(temp)!
+            expenseValue = ((expenseValue) * 100).rounded() / 100
+        }
+        else{
+            expenseValue = 0
+        }
+        
+        totalLabel.text = ("$ \(expenseValue + currentValue)")
+    }
+    */
+        
 }
+
+    
+
 

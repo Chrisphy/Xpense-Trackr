@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import os.log
 
 class Expenses : NSObject, NSCoding {
     
@@ -57,7 +56,7 @@ class Expenses : NSObject, NSCoding {
         
         // The name is required. If we cannot decode a name string, the initializer should fail.
         guard let name = aDecoder.decodeObject(forKey: propertyKey.name) as? String else {
-            os_log("Unable to decode the name for a Meal object.", log: OSLog.default, type: .debug)
+            print("Unable to decode the name for a Meal object.")
             return nil
         }
         

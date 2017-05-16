@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import os.log
 
 class ExpenseTableViewController: UITableViewController {
     var expenses = [Expenses]();
-    
+    var currentValue: Double!
+
+    @IBOutlet weak var totalLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +57,26 @@ class ExpenseTableViewController: UITableViewController {
         let expense = expenses[indexPath.row]
         
         cell.nameLabel.text = expense.name
-        cell.expenseLabel.text = String(expense.expenseValue)
+        cell.expenseLabel.text = String(format: "%.2f", expense.expenseValue)
         cell.photoImage.image = expense.photo
         // Configure the cell...
+        
+        
+        if let temp = Double(totalLabel.text!) {
+            print("The current total is \(temp)")
+            currentValue = ((Double(temp)) * 100).rounded() / 100
+        } else {
+            print("Not a valid number: \(totalLabel.text!)")
+            currentValue = 0.00
+        }
+        
+        
+        let new = Double(expense.expenseValue)
+        
+        totalLabel.text = String(format: "%.2f", (currentValue + new))
+        
+        
+        
     
         
         return cell
@@ -78,29 +96,53 @@ class ExpenseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            
+            let expense = expenses[indexPath.row]
+            
+            if let temp = Double(totalLabel.text!) {
+                print("The current total is \(temp)")
+                currentValue = ((Double(temp)) * 100).rounded() / 100
+            } else {
+                print("Not a valid number: \(totalLabel.text!)")
+                currentValue = 0.00
+            }
+ 
+            let new = Double(expense.expenseValue)
+            
+            totalLabel.text = String(format: "%.2f", (currentValue - new))
+            
             expenses.remove(at: indexPath.row)
+
             save()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+
+        
     }
     
 
-    /*
+    
     // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        
+        let expense_move = expenses[fromIndexPath.row]
+        expenses.remove(at: fromIndexPath.row)
+        expenses.insert(expense_move, at: destinationIndexPath.row)
+        
+        print("Moved successfully!")
     }
-    */
+ 
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
 
     
     // MARK: - Navigation
@@ -113,7 +155,7 @@ class ExpenseTableViewController: UITableViewController {
         switch(segue.identifier ?? "") {
             
         case "AddItem":
-                os_log("New expense", log:OSLog.default, type: .debug)
+                print("New expense")
             
         case "ShowDetails":
             guard let ExpenseDetailsViewController = segue.destination as? ExpenseViewController else {
@@ -152,26 +194,15 @@ class ExpenseTableViewController: UITableViewController {
                 expenses.append(expense)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
                 
-                var expenseCurrent: Double? = 0.00
-                let current : Double = expense.expenseValue
-                if let temp = TotalExpenseViewController().totalExpenseLabel?.text {
-                    expenseCurrent = ((Double(temp)! + current) * 100).rounded() / 100
-                }
-                else {
-                    expenseCurrent = 0 + current
-                }
-                
-                if expenseCurrent != nil {
-                TotalExpenseViewController().totalExpenseLabel.text = "$ \(expenseCurrent)"
-                }
-                else {
-                    TotalExpenseViewController().totalExpenseLabel.text = "$ 0"
-                }
             }
             save()
         }
 
     }
+    
+    
+    
+    
     
     private func loadSamples(){
         let photo1 = UIImage(named: "defaultPhoto")
@@ -186,9 +217,9 @@ class ExpenseTableViewController: UITableViewController {
     private func save(){
         let Success = NSKeyedArchiver.archiveRootObject(expenses, toFile: Expenses.Archive.path)
         if Success {
-            os_log("Successfully saved.", log: OSLog.default, type: .debug)
+            print("Successfully saved.")
         } else {
-            os_log("Failed to save", log: OSLog.default, type: .error)
+            print("Failed to save")
         }
     }
     
