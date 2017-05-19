@@ -54,18 +54,18 @@ class Expenses : NSObject, NSCoding {
     
     required convenience init?(coder aDecoder: NSCoder) {
         
-        // The name is required. If we cannot decode a name string, the initializer should fail.
+        // The name is required.
         guard let name = aDecoder.decodeObject(forKey: propertyKey.name) as? String else {
-            print("Unable to decode the name for a Meal object.")
+            print("Decoding failed.")
             return nil
         }
         
-        // Because photo is an optional property of Meal, just use conditional cast.
+        // Cast for photo
         let photo = aDecoder.decodeObject(forKey: propertyKey.photo) as? UIImage
         
         let expenseValue = aDecoder.decodeDouble(forKey: propertyKey.expenseValue)
         
-        // Must call designated initializer.
+        // initialiser
         self.init(name: name, photo: photo, value: expenseValue)
         
         

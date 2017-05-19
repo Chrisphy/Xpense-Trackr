@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9G8-m6-lFC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9G8-m6-lFC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -242,7 +242,7 @@
         <!--TotalExpenseviewController-->
         <scene sceneID="mn0-rf-JPv">
             <objects>
-                <viewController title="TotalExpenseviewController" id="CaO-48-T8v" customClass="TotalExpenseViewController" customModule="Xpense_Trackr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TotalExpenseviewController" id="CaO-48-T8v" customClass="InfoViewController" customModule="Xpense_Trackr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="huW-YH-NXy"/>
                         <viewControllerLayoutGuide type="bottom" id="sSq-Dl-cqb"/>
@@ -251,27 +251,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Expenses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cea-cf-kt1">
-                                <rect key="frame" x="54" y="62" width="266" height="80"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0Q-Pr-GY8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <color key="textColor" red="1" green="0.00040475297272257738" blue="0.19688235729250469" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aq1-5X-qF8">
-                                <rect key="frame" x="54" y="184" width="266" height="105"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZJG-5k-Fsi">
+                                <rect key="frame" x="154" y="553" width="67" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="83G-KJ-8QY"/>
+                                    <constraint firstAttribute="height" constant="37" id="ZJ7-dh-Hix"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="0.20112074629999999" green="1" blue="0.076054104489999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZJG-5k-Fsi" secondAttribute="trailing" constant="138" id="DPU-6V-m2d"/>
+                            <constraint firstItem="ZJG-5k-Fsi" firstAttribute="top" secondItem="huW-YH-NXy" secondAttribute="bottom" constant="533" id="RST-Tv-lwX"/>
+                            <constraint firstItem="ZJG-5k-Fsi" firstAttribute="leading" secondItem="qyU-ga-x4W" secondAttribute="leadingMargin" constant="138" id="qRI-QB-RMO"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="pfU-OE-Vha"/>
+                    <tabBarItem key="tabBarItem" title="Info" image="info" id="pfU-OE-Vha"/>
                     <connections>
+                        <outlet property="pageControl" destination="ZJG-5k-Fsi" id="XCh-BS-MRr"/>
+                        <outlet property="scrollView" destination="E0Q-Pr-GY8" id="Mjx-BF-TTb"/>
                         <outlet property="searchDisplayController" destination="8Yp-SD-NZh" id="VMv-ZY-zhw"/>
-                        <outlet property="totalExpenseLabel" destination="aq1-5X-qF8" id="fEP-4z-D2m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="049-z0-jEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -284,7 +289,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="236" y="1005"/>
+            <point key="canvasLocation" x="-719" y="1058"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lj8-gH-hoa">
@@ -344,6 +349,7 @@
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
+        <image name="info" width="25" height="25"/>
         <image name="money" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

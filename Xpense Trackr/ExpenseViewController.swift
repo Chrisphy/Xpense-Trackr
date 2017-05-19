@@ -16,7 +16,6 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var totalLabel: UILabel!
     
     var expense : Expenses?
     var expenseValue: Double = 0.00
@@ -106,12 +105,14 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             let alert = UIAlertController(title: "Error", message: "You did not fill out the amount field", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+
         }
         else if (name.isEmpty == true && amount_text.isEmpty == false)
         {
             let alert = UIAlertController(title: "Error", message: "You did not fill out the text field", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+
         }
         else {
             if let temp = amountTextField.text{
@@ -144,6 +145,7 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     private func updateSaveButton(){
         // Disable 
         let text = expenseTextField.text ?? ""
+
         saveButton.isEnabled = !text.isEmpty
         
     }
@@ -160,6 +162,7 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         let imagePickerController = UIImagePickerController()
         
         // Only allow photos to be picked, not taken.
+        // Replace .photoLibary with .camera for camera access (unable to emulate)
         imagePickerController.sourceType = .photoLibrary
         
         // Make sure ViewController is notified when the user picks an image.
@@ -215,28 +218,6 @@ class ExpenseViewController: UIViewController, UITextFieldDelegate, UIImagePicke
 
     
     
-    /*
-    private func updateLabel(){
-        if let temp = totalLabel.text{
-            currentValue = Double(temp)!
-            currentValue = ((currentValue) * 100).rounded() / 100
-        }
-        else{
-            currentValue = 0
-        }
-        
-        if let temp = amountTextField.text{
-            expenseValue = Double(temp)!
-            expenseValue = ((expenseValue) * 100).rounded() / 100
-        }
-        else{
-            expenseValue = 0
-        }
-        
-        totalLabel.text = ("$ \(expenseValue + currentValue)")
-    }
-    */
-        
 }
 
     

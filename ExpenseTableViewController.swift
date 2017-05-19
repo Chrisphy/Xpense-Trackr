@@ -56,12 +56,12 @@ class ExpenseTableViewController: UITableViewController {
         
         let expense = expenses[indexPath.row]
         
+        //set cell values
         cell.nameLabel.text = expense.name
         cell.expenseLabel.text = String(format: "%.2f", expense.expenseValue)
         cell.photoImage.image = expense.photo
-        // Configure the cell...
         
-        
+        //set label
         if let temp = Double(totalLabel.text!) {
             print("The current total is \(temp)")
             currentValue = ((Double(temp)) * 100).rounded() / 100
@@ -70,14 +70,15 @@ class ExpenseTableViewController: UITableViewController {
             currentValue = 0.00
         }
         
-        
         let new = Double(expense.expenseValue)
         
+        if(currentValue <= new) {
         totalLabel.text = String(format: "%.2f", (currentValue + new))
-        
-        
-        
-    
+        }
+        else{
+        totalLabel.text = String(format: "%.2f", (currentValue + new))
+
+        }
         
         return cell
     }
@@ -112,6 +113,10 @@ class ExpenseTableViewController: UITableViewController {
             totalLabel.text = String(format: "%.2f", (currentValue - new))
             
             expenses.remove(at: indexPath.row)
+            
+            if expenses.isEmpty {
+                totalLabel.text = String(format: "%.2f", (0))
+            }
 
             save()
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -127,7 +132,7 @@ class ExpenseTableViewController: UITableViewController {
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        
+        //move the items in the list
         let expense_move = expenses[fromIndexPath.row]
         expenses.remove(at: fromIndexPath.row)
         expenses.insert(expense_move, at: destinationIndexPath.row)
@@ -185,6 +190,8 @@ class ExpenseTableViewController: UITableViewController {
             if let selectedIndex = tableView.indexPathForSelectedRow {
                 // Update existing data.
                 expenses[selectedIndex.row] = expense
+                
+                
                 tableView.reloadRows(at: [selectedIndex], with: .none)
             }
             else {
